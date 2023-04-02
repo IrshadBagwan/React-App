@@ -6,20 +6,61 @@ const ExpenseForm = ()=>{
     const[EnteredTitle,setEnteredTitle] = useState('');
     const[EnteredAmount,setEnteredAmount] =useState('');
     const[EnteredDate,setEnteredDate]=useState('');
-    const titlechangeHandler=(event)=>{
+//    const[UserInput,setUserInput] = useState({
+//         enteredTitle:"",
+//         enteredAmount:"",
+//         enteredDate:""
+//     })
 
-        
-        setEnteredTitle(event.target.value)
+    const titlechangeHandler=(event)=>{
+           
+        setEnteredTitle(event.target.value);
+        // setUserInput({
+            
+        //     ...UserInput,
+        //     enteredTitle:event.target.value,
+        // })
+
+        // setUserInput((prevState)=>{
+        //     return {...prevState, enteredTitle:event.target.value};
+        // })
     }
 
     const AmountchangeHandler=(event)=>{
+
          setEnteredAmount(event.target.value);
-    }
+        // setUserInput({
+        // ...UserInput,
+        // enteredAmount: event.target.value,
+        // })
+
+      
+        }
+    
 
     const datachangehandler=(event)=>{
-          setEnteredDate(event.target.value);
-    }
-   return <form>
+
+         setEnteredDate(event.target.value);
+
+        // setUserInput({
+        // ...UserInput,
+        // enteredDate: event.target.value,
+        // })
+    };
+
+    const submitHandler=(event)=>{
+          event.preventDefault();
+        const expenseData ={
+            title:EnteredTitle,
+            amount:EnteredAmount,
+            date:new Date(EnteredDate)
+        };
+        console.log(expenseData)
+
+    };
+
+
+   return <form onSubmit={submitHandler}>
        <div className="new-expense__controls">
            <div className="new-expense__control">
                <label>Title</label>
