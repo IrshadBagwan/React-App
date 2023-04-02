@@ -1,12 +1,13 @@
 
-import React from 'react';
 
+import ExpenseDetail from './componenets/Expenses/ExpenseDetails.js';
+import NewExpense from './componenets/NewExpenses/NewExpense.js';
 // import ExpenseItem from './componenets/ExpenseItems.js';
 import Expenses from './componenets/Expenses/Expenses.js';
-const App=()=> {
-  
-  const expenses = [
-    {
+import React, { useState } from 'react';
+
+const Dummydata=
+    [{
       id: 'e1',
       title: 'Toilet Paper',
       amount: 94.12,
@@ -27,14 +28,29 @@ const App=()=> {
       amount: 450,
       locationofexpendeture:'paytm',
       date: new Date(2021, 5, 12),
-    },
-  ]
-
-  return (
+    }];
+const App=()=> {
+  
+   const[expenses,setExpenses] = useState(Dummydata);
+  
+  const addExpenseHandler =(expense)=>{
+      const userdata =[...expenses, expense];
+      setExpenses(userdata);
+     console.log(expenses);
+  }
+ 
+ return (
    
     <div>
+     
+     <NewExpense  onAddExpense={addExpenseHandler}/>
       <Expenses items={expenses}></Expenses>
+      
+   
+    
     </div>
+      
+         
        
       );
 }
