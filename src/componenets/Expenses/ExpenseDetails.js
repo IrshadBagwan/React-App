@@ -14,18 +14,14 @@ const ExpenseDetail=(props)=>{
 
   }
 
-  function clickhandler(){
-    
-  setTitle('updated!');
-   console.log(title);
-  //   return(
-  // props.itm.map((el,i)=>{
-       
-    
-  //     if(el[i].id===id){
-  //       props.itm.splice(i,1);
-  //   }
-  //   }))
+  function clickhandler(id){
+     return(
+      
+  props.itm.map((el,i)=>{
+       if(el[i].id===id){
+        props.itm.splice(i,1);
+    }
+    }))
   }
     return(
      
@@ -39,7 +35,7 @@ const ExpenseDetail=(props)=>{
           </div>
           <div className="expense-item__description">{props.location}</div>
           <div className="expense-item__price">{amount}</div>
-          <button onClick={clickhandler}>Delete Task</button>
+          <button onClick={clickhandler(props.id)}>Delete Task</button>
           <button onClick={changeExpenses}>change Amount</button>
         </div>
         
